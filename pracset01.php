@@ -38,15 +38,20 @@ function manipulationString(string $string): string
     return strtolower($string);
 }
 
-
-// Check if a number is even or odd
-$number = 42;
-if ($number % 2 == 0) {
-    echo "\nThe number " . $number . " is even.";
-} else {
-    echo "\nThe number " . $number . " is odd.";
+/**
+ * Check if a number is even or odd
+ *
+ * A given number is determined if it is an even or odd number.
+ * If the given number is an even number, it will return an indication that it is an even number.
+ * If the given number is an odd number, it will return an indication that it is an odd number.
+ *
+ * @param int $number The given number to check.
+ * @return string The result indicating if the given number is even or odd.
+ */
+function isNumberEvenOdd(int $number): string
+{
+    return ($number % 2 == 0) ? "The number $number is even." : "The number $number is odd.";
 }
-
 
 
 // Example usage for calculateTotalPrice:
@@ -66,3 +71,10 @@ $string = "This is a poorly written program with little structure and readabilit
 $modifiedString = manipulationString($string);
 echo "String: $string \n";
 echo "Modified string: $modifiedString \n";
+
+
+// Example usage for isNumberEvenOdd:
+
+$number = 42;
+$evenOddResult = isNumberEvenOdd($number);
+echo "$evenOddResult";

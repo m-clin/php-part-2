@@ -2,10 +2,31 @@
                 Nepomuceno, Mark Dhenniel -->
 
 <?php
+$stopWords = array('a', 'an', 'and', 'are', 'as', 'at', 'be', 'by', 'for', 'from', 'has', 'he', 'in', 'is', 'it', 'its', 'of', 'on', 'that', 'the', 'to', 'was', 'were', 'will', 'with');
 
 function tokenizeText($text) {
     // Tokenize the text into words, removing punctuation and converting to lowercase
     return preg_split('/\W+/', strtolower($text), -1, PREG_SPLIT_NO_EMPTY);
+}
+
+function calculateWordFrequencies($words) {
+    global $stopWords;
+
+    // Create an associative array to store word frequencies
+    $wordCounts = array();
+
+    // Iterate through the words and update the frequency
+    foreach ($words as $word) {
+        if (!in_array($word, $stopWords)) {
+            if (isset($wordCounts[$word])) {
+                $wordCounts[$word]++;
+            } else {
+                $wordCounts[$word] = 1;
+            }
+        }
+    }
+
+    return $wordCounts;
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -15,6 +36,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Tokenize the input text
     $words = tokenizeText($text);
+
+    // Calculate word frequencies
+    $wordCounts = calculateWordFrequencies($words);
+
 }
 ?>
 

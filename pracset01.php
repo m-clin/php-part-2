@@ -23,15 +23,22 @@ function calculateTotalPrice(array $items): float
     return $totalPrice;
 }
 
+/**
+ * Perform a series of string manipulations
+ *
+ * Removes spaces and convert the given string to lowercase.
+ *
+ * @param string $string The string to manipulate.
+ * @return string The modified string.
+ */
+function manipulationString(string $string): string
+{
+    // Remove spaces and convert to lowercase
+    $string = str_replace(' ', '', $string);
+    return strtolower($string);
+}
 
-// Perform a series of string manipulations
-$string = "This is a poorly written program with little
-structure and readability.";
-// Remove spaces and convert to lowercase
-$string = str_replace(' ', '', $string);
-$string = strtolower($string);
-// Display the modified string
-echo "\nModified string: " . $string;
+
 // Check if a number is even or odd
 $number = 42;
 if ($number % 2 == 0) {
@@ -42,7 +49,7 @@ if ($number % 2 == 0) {
 
 
 
-// Example usage:
+// Example usage for calculateTotalPrice:
 
 $products = [
     ['name' => 'Widget A', 'price' => 10],
@@ -51,3 +58,11 @@ $products = [
 ];
 $total = calculateTotalPrice($products);
 echo "Total Price: $total\n";
+
+
+// Example usage for manipulationString:
+
+$string = "This is a poorly written program with little structure and readability.";
+$modifiedString = manipulationString($string);
+echo "String: $string \n";
+echo "Modified string: $modifiedString \n";

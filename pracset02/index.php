@@ -29,6 +29,15 @@ function calculateWordFrequencies($words) {
     return $wordCounts;
 }
 
+function sortWords($wordCounts, $sortOrder) {
+    if ($sortOrder == 'asc') {
+        asort($wordCounts);
+    } else {
+        arsort($wordCounts);
+    }
+    return $wordCounts;
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $text = $_POST['text'];
     $sortOrder = $_POST['sort'];
@@ -40,11 +49,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Calculate word frequencies
     $wordCounts = calculateWordFrequencies($words);
 
+    // Sort the word counts based on the selected order
+    $sortedWordCounts = sortWords($wordCounts, $sortOrder);
+
 }
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Word Frequency Counter</title>
@@ -69,5 +81,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         <input type="submit" name="calcWordFrequency" value="Calculate Word Frequency">
     </form>
+
+    <?php if ($_SERVER["REQUEST_METHOD"] == "POST"): ?>
+        <div class="result-container">
+            <h2>Word Frequency Results</h2>
+            <table>
+                <tr>
+                    <th>Word</th>
+                    <th>Frequency</th>
+                </tr>
+                <?php
+                $count = 0;
+                foreach ($sortedWordCounts as $word => $frequency) {
+                    echo "<tr>";
+                    echo "<td>$word</td>";
+                    echo "<td>$frequency</td>";
+                    echo "</tr>";
+                    $count++;
+                    if ($count >= $limit) {
+                        break;
+                    }
+                }
+                ?>
+            </table>
+        </div>
+    <?php endif; ?>
+
 </body>
 </html>

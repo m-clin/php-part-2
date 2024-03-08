@@ -11,7 +11,7 @@ function tokenizeText($text)
     return preg_split('/\W+/', strtolower($text), -1, PREG_SPLIT_NO_EMPTY);
 }
 
-function calculateWordFrequencies($words)
+function calculateWordFrequencies($words): array
 {
     global $stopWords;
 

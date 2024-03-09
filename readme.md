@@ -20,4 +20,8 @@ This repository is a requirement to our course Application Development and Emerg
 <a href="https://github.com/iAmRangz"> <img src="https://github.com/gauravghongde/social-icons/blob/master/PNG/Color/Github.png?raw=true" alt="Github icon" width="30"></a><a href="https://www.facebook.com/iAmRangz"><img src="https://github.com/gauravghongde/social-icons/blob/master/PNG/Color/Facebook.png?raw=true" alt="Facebook icon" width="30"></a>
 
 
+### Credits:
+
+The list of stop words used in this project was obtained from [https://countwordsfree.com/stopwords](https://countwordsfree.com/stopwords).
+
 

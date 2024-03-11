@@ -2,13 +2,9 @@
 Nepomuceno, Mark Dhenniel -->
 
 <?php
-$stopWordsFile = 'stop_words.txt';
-$stopWords = file($stopWordsFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-$stopWords = array_map('strtolower', $stopWords);
-
 require_once 'process.php';
 
-
+$stopWords = getStopWords();
 $text = readInputText();
 $sortOrder = $_POST['sort'] ?? 'desc';
 $limit = $_POST['limit'] ?? 10;
@@ -79,6 +75,5 @@ if (!empty($text)) {
         </table>
     </div>
 <?php endif; ?>
-
 </body>
 </html>

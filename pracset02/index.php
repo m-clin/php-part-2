@@ -10,7 +10,7 @@ require_once 'process.php';
 
 
 $text = readInputText();
-$sortOrder = $_POST['sort'] ?? 'asc';
+$sortOrder = $_POST['sort'] ?? 'desc';
 $limit = $_POST['limit'] ?? 10;
 
 if (!empty($text)) {
